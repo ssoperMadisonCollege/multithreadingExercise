@@ -7,11 +7,11 @@ class Riley implements Runnable
     public Riley(Halloween halloween)
     {
         this.halloween = halloween;
-        System.out.println("Created Riley instance...");
+        System.out.println("Created Riley instance");
     }
     public void run()
     {
-        System.out.println("Starting to start Riley thread...");
+        System.out.println("Starting a Riley thread");
         try
         {
             Thread.sleep(3000);
@@ -20,10 +20,10 @@ class Riley implements Runnable
         {
             iex.printStackTrace();
         }
-        System.out.println("Riley instance finished starting...");
+        System.out.println("Riley thread started");
         while(true)
         {
-            System.out.println("MADE IT HERE");
+            System.out.println("Giving candy...");
             halloween.giveCandy();
         }
     }

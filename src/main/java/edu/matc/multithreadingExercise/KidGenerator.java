@@ -14,14 +14,14 @@ class KidGenerator implements Runnable
 
     public void run()
     {
-        System.out.println("Starting KidGenerator thread...");
+        System.out.println("Starting KidGenerator thread");
         while(true)
         {
-            System.out.println("Generating kids...");
+            System.out.println("Generating kids");
             Kid kid = new Kid(halloween);
             kid.setInTime(new Date());
             Thread threadKid = new Thread(kid);
-            kid.setName("Kid Thread "+threadKid.getId());
+            kid.setName("Kid Thread " + threadKid.getId());
             threadKid.start();
 
             try

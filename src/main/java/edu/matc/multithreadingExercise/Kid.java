@@ -10,7 +10,7 @@ class Kid implements Runnable {
 
     public Kid(Halloween halloween)
     {
-        System.out.println("Created a new kid (on the block)...");
+        System.out.println("Created a new kid");
         this.halloween = halloween;
     }
 
@@ -24,11 +24,12 @@ class Kid implements Runnable {
 
     public void setName(String name) {
         this.name = name;
+        System.out.println("A name has been set for a kid");
     }
 
     public void setInTime(Date inTime) {
         this.inTime = inTime;
-        System.out.println("A time has been set for a kid...");
+        System.out.println("A time has been set for a kid");
     }
 
     public void run()

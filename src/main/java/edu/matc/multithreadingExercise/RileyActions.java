@@ -14,8 +14,8 @@ public class RileyActions {
         Thread threadRiley = new Thread(riley);
         Thread threadKidGenerator = new Thread(kidGenerator);
         threadKidGenerator.start();
-        System.out.println("This class instance (RileyActions) started a kid generator thread...");
+        System.out.println("This class instance (RileyActions) started a kid generator thread");
         threadRiley.start();
-        System.out.println("This class instance (RileyActions) started a Riley thread...");
+        System.out.println("This class instance (RileyActions) started a Riley thread");
     }
 }

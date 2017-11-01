@@ -1,12 +1,10 @@
 package edu.matc.multithreadingExercise;
 
-import org.junit.Test;
+public class RileyMain {
 
-public class RileyActionsTest {
-
-    @Test
-    public void doTheHalloweenTest() throws Exception {
+    public static void main(String[] args) {
         RileyActions rileyActions = new RileyActions();
         rileyActions.doTheThreads();
     }
+
 }
