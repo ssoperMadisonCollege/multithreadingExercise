@@ -6,27 +6,28 @@ import java.util.concurrent.TimeUnit;
 
 class Halloween {
     int kidLinePosition;
-    List<Kid> listKid;
+    List<Kid> listOfKids;
 
     public Halloween()
     {
-        kidLinePosition = 3;
-        listKid = new LinkedList<Kid>();
+        kidLinePosition = 10;
+        listOfKids = new LinkedList<Kid>();
+        System.out.println("Created a Halloween, there are " + kidLinePosition + " positions in Riley's line...");
     }
 
     public void giveCandy()
     {
         Kid kid;
         System.out.println("Riley waiting for lock.");
-        synchronized (listKid)
+        synchronized (listOfKids)
         {
 
-            while(listKid.size()==0)
+            while(listOfKids.size()==0)
             {
                 System.out.println("Riley is waiting for kid.");
                 try
                 {
-                    listKid.wait();
+                    listOfKids.wait();
                 }
                 catch(InterruptedException iex)
                 {
@@ -34,12 +35,12 @@ class Halloween {
                 }
             }
             System.out.println("Riley found a kid in line.");
-            kid = (Kid)((LinkedList<?>)listKid).poll();
+            kid = (Kid)((LinkedList<?>)listOfKids).poll();
         }
         long duration=0;
         try
         {
-            System.out.println("Riley telling Kid their costume is super cool : "+kid.getName());
+            System.out.println("Riley telling " + kid.getName() + " their costume is super cool and giving them candy");
             duration = (long)(Math.random()*10);
             TimeUnit.SECONDS.sleep(duration);
         }
@@ -52,22 +53,22 @@ class Halloween {
 
     public void add(Kid kid)
     {
-        System.out.println("Kid : "+kid.getName()+ " entering halloween at "+kid.getInTime());
+        System.out.println("Kid : " + kid.getName() + " entering halloween (the dark of the night) at "+kid.getInTime());
 
-        synchronized (listKid)
+        synchronized (listOfKids)
         {
-            if(listKid.size() == kidLinePosition)
+            if(listOfKids.size() == kidLinePosition)
             {
                 System.out.println("No candy available for kid "+kid.getName());
-                System.out.println("Kid "+kid.getName()+"Exists...");
+                System.out.println("Kid "+ kid.getName() + " Exists...");
                 return ;
             }
 
-            ((LinkedList<Kid>)listKid).offer(kid);
-            System.out.println("Kid : "+kid.getName()+ " got the candy.");
+            ((LinkedList<Kid>)listOfKids).offer(kid);
+            System.out.println("Kid : " + kid.getName() + " got the candy.");
 
-            if(listKid.size()==1)
-                listKid.notify();
+            if(listOfKids.size()==1)
+                listOfKids.notify();
         }
     }
 }
